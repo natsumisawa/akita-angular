@@ -8,7 +8,7 @@ export interface SessionState {
 export function createInitialState(): SessionState {
   return {
     token: '',
-    name: string
+    name: ''
   };
 }
 
