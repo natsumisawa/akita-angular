@@ -11,7 +11,7 @@ import {FormGroup, FormControl} from '@angular/forms';
 })
 export class SampleComponent implements OnInit, OnDestroy {
   charaForm = new FormGroup({
-    name: new FormControl(''),
+    charaName: new FormControl(''),
     description: new FormControl(''),
   });
   private subscription: Subscription | undefined;

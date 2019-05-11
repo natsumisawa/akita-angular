@@ -7,20 +7,16 @@
   <div *ngFor="let chara of charaList">
     <ul>
       <li>
-        {{ chara.id }}{{ chara.name }}
+        {{ chara.id }} {{ chara.name }}
       </li>
     </ul>
   </div>
   <div>
     <form [formGroup]="charaForm">
-    <label>
-      name:
-      <input type="text" [formControl]="name">
-    </label>
-    <label>
-      description:
+      <p>name</p>
+      <input type="text" [formControl]="charaName">
+      <p>description</p>
       <input type="text" [formControl]="description">
-    </label>
     </form>
   </div>
 </ng-container>
