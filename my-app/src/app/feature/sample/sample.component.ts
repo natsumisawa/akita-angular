@@ -1,6 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {PrService} from './shared/state/pr.service';
+import {Chara, CharaListService} from './shared/state/charaList.service';
 import {Observable, Subscription} from 'rxjs';
+import {CharaListQuery} from './shared/state/charaList.query';
 
 @Component({
   selector: 'app-sample',
@@ -9,22 +10,22 @@ import {Observable, Subscription} from 'rxjs';
 })
 export class SampleComponent implements OnInit, OnDestroy {
   private subscription: Subscription | undefined;
-  content: string;
+  charaList$: Observable<Chara[]>;
 
   constructor(
-    private service: PrService,
+    private service: CharaListService,
+    private charaListQuery: CharaListQuery
   ) {
-    this.getPr();
+    this.initFetch();
   }
 
-  async getPr(): Promise<void> {
+  async initFetch(): Promise<void> {
     try {
-      const res = await this.service.getPr().toPromise();
-      console.log(res);
-      this.content = '成功になるはずがない';
+      await this.service.getCharas();
+      // quieryから受け取るのはObservable
+      this.charaList$ = this.charaListQuery.selectAll();
     } catch (e) {
       console.log(e);
-      this.content = 'errorだったよ';
     }
   }
 

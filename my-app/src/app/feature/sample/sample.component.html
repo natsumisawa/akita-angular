@@ -1,6 +1,17 @@
-<h1>
-  sample componentのページです
-</h1>
-<p>
-  {{ content }}
-</p>
+<ng-container *ngIf="(charaList$ | async) as charaList; else loading">
+  <div>
+    <h1>
+      charactor一覧
+    </h1>
+  </div>
+  <div *ngFor="let chara of charaList">
+    <ul>
+      <li>
+        {{ chara.id }}{{ chara.name }}
+      </li>
+    </ul>
+  </div>
+</ng-container>
+<ng-template #loading>
+  <div>データ取得中</div>
+</ng-template>
