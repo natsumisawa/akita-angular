@@ -11,6 +11,18 @@
       </li>
     </ul>
   </div>
+  <div>
+    <form [formGroup]="charaForm">
+    <label>
+      name:
+      <input type="text" [formControl]="name">
+    </label>
+    <label>
+      description:
+      <input type="text" [formControl]="description">
+    </label>
+    </form>
+  </div>
 </ng-container>
 <ng-template #loading>
   <div>データ取得中</div>

@@ -2,6 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Chara, CharaListService} from './shared/state/charaList.service';
 import {Observable, Subscription} from 'rxjs';
 import {CharaListQuery} from './shared/state/charaList.query';
+import {FormGroup, FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-sample',
@@ -9,6 +10,10 @@ import {CharaListQuery} from './shared/state/charaList.query';
   styleUrls: ['./sample.component.css']
 })
 export class SampleComponent implements OnInit, OnDestroy {
+  charaForm = new FormGroup({
+    name: new FormControl(''),
+    description: new FormControl(''),
+  });
   private subscription: Subscription | undefined;
   charaList$: Observable<Chara[]>;
 
